@@ -3,7 +3,7 @@
 	"package": "lukeisbrecht.notrampling.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"FarmlandBlockMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
