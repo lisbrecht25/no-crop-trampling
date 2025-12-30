@@ -13,11 +13,11 @@ public class NoCropTrampling implements ModInitializer {
 	public static final String MOD_ID = "no-trampling";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static GameRule<Boolean> DO_CROP_TRAMPLING;
+	public static GameRule<TrampleProtection> CROP_TRAMPLING_PROTECTION;
 
 	@Override
 	public void onInitialize() {
-		DO_CROP_TRAMPLING = GameRuleBuilder.forBoolean(false)
-				.buildAndRegister(Identifier.of("notrampling", "do_crop_trampling"));
+		CROP_TRAMPLING_PROTECTION = GameRuleBuilder.forEnum(TrampleProtection.ALL)
+				.buildAndRegister(Identifier.of("notrampling", "crop_trampling_protection"));
 	}
 }
