@@ -8,10 +8,8 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 @Config(name = "notrampling")
 public class NoCropTramplingConfig implements ConfigData {
 
-    @ConfigEntry.Gui.Tooltip
     @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
     public TrampleProtection defaultProtectionLevel = TrampleProtection.ALL;
 
-    @ConfigEntry.Gui.Tooltip
-    public boolean overrideGamerule = true;
+    public boolean overrideGamerule = false;
 }
