@@ -1,6 +1,7 @@
 package lukeisbrecht.notrampling.mixin;
 
 import lukeisbrecht.notrampling.NoCropTrampling;
+import lukeisbrecht.notrampling.command.TramplingProtectionCommand;
 import lukeisbrecht.notrampling.config.TrampleProtection;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FarmlandBlock;
@@ -25,7 +26,7 @@ public class FarmlandBlockMixin {
             if (NoCropTrampling.CONFIG.overrideGamerule) {
                 protection = NoCropTrampling.CONFIG.defaultProtectionLevel;
             } else {
-                protection = lukeisbrecht.notrampling.config.TrampleProtectionGameRules.getTrampleProtectionLevel(serverWorld);
+                protection = TramplingProtectionCommand.protectionLevel;
             }
 
             boolean shouldProtect = switch (protection) {

@@ -4,13 +4,15 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import lukeisbrecht.notrampling.config.TrampleProtection;
-import lukeisbrecht.notrampling.config.TrampleProtectionGameRules;
+import lukeisbrecht.notrampling.data.DataManager;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 
 public class TramplingProtectionCommand {
+    public static TrampleProtection protectionLevel = DataManager.getData().protection;
+
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess, CommandManager.RegistrationEnvironment environment) {
         dispatcher.register(CommandManager.literal("tramplingProtection")
                 .requires(source -> source.hasPermissionLevel(2))
@@ -30,10 +32,11 @@ public class TramplingProtectionCommand {
         String input = StringArgumentType.getString(context, "level").toUpperCase();
 
         try {
-            TrampleProtection protection = TrampleProtection.valueOf(input);
-            TrampleProtectionGameRules.setTrampleProtectionLevel(context.getSource().getWorld(), protection);
+            protectionLevel = TrampleProtection.valueOf(input);
+            DataManager.getData().protection = protectionLevel;
+            DataManager.save();
             context.getSource().sendFeedback(
-                    () -> Text.literal("Set trample protection level to " + protection.getDisplayName()),
+                    () -> Text.literal("Set trample protection level to " + protectionLevel.getDisplayName()),
                     true
             );
             return 1;
