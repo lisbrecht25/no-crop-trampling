@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "no-trampling",
-	"version": "1.10.3",
+	"version": "1.9.3",
 	"name": "No Crop Trampling",
 	"description": "This mod disables crop trampling by entities by default and allows the user to toggle through a gamerule.",
 	"authors": [
@@ -37,7 +37,7 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.18.4",
-		"minecraft": "~1.21.10",
+		"minecraft": "~1.21.9",
 		"java": ">=21",
 		"fabric-api": "*",
 		"cloth-config": ">=20.0.149"
